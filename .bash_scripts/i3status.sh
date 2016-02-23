@@ -1,9 +1,11 @@
 #!/bin/bash
 
+NVCLOCK=/usr/bin/nvclock 
+
 function nvinfo() {
     info=$1
     flag=$2
-    sudo /usr/bin/nvclock -${flag} | grep "${info}" | sed "s/.*${info}:\s*\([0-9]*\)/\1/"
+    sudo $NVCLOCK -${flag} | grep "${info}" | sed "s/.*${info}:\s*\([0-9]*\)/\1/"
 }
 
 
@@ -11,7 +13,11 @@ function nvinfo() {
 i3status | while :
 do
     read line
-    gputemp=$(nvinfo "temperature" T )
-    gpuspeed=$(nvinfo "GPU clock" s )
-    echo "GPU: ${gputemp}  ${gpuspeed} | $line" || exit 1
+    if [ -x $NVCLOCK ];then
+        gputemp=$(nvinfo "temperature" T )
+        gpuspeed=$(nvinfo "GPU clock" s )
+        echo "GPU: ${gputemp}  ${gpuspeed} | $line" || exit 1
+    else
+        echo "$line"
+    fi
 done
