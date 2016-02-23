@@ -138,7 +138,15 @@ cbd() {
 }
 
 
-sync_cwd_with_remote() {
+rsync_cwd_with_remote() {
     REMOTE="${1}:$(pwd)/."
-    rsync -avz --cvs-exclude ${REMOTE} .
+    rsync -avz --filter "dir-merge,n- .rsync_exclude" ${REMOTE} .
+}
+
+
+rsync_exclude_git() {
+    for dir in $(find -type d -name ".git")
+    do base=${dir:0:-4}
+        find ${base} -maxdepth 1 -printf "./%f\n" | grep -v "\.git\|\.rsync_exclude" > ${base}/.rsync_exclude
+    done
 }
