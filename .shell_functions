@@ -136,3 +136,9 @@ cbd() {
     echo $DIR
     cd $DIR
 }
+
+
+sync_cwd_with_remote() {
+    REMOTE="${1}:$(pwd)/."
+    rsync -avz --cvs-exclude ${REMOTE} .
+}
