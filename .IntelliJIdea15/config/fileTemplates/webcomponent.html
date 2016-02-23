@@ -1,0 +1,37 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<dom-module id="${COMP_NAME}"> 
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+      span,
+      input {
+        @apply(--paper-font-body2);
+      }
+    </style>
+  <template>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+      
+      class ${COMP_CLASS_NAME} {
+        beforeRegister() {
+          this.is '${COMP_NAME}'
+          this.properties: {
+            test: {
+              type: String,
+              value: 'Welcome!',
+              notify: true
+            }
+          }
+        }
+      }
+      
+      Polymer(${COMP_CLASS_NAME});
+    })();
+  </script>
+</dom-module>
