@@ -86,6 +86,8 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias zshchtheme="${ZSH}/tools/theme_chooser.sh"
 
+[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
+
 if [ -f ~/.bash_aliases_private ]; then
     . ~/.bash_aliases_private
 fi
