@@ -147,6 +147,6 @@ rsync_cwd_with_remote() {
 rsync_exclude_git() {
     for dir in $(find -type d -name ".git")
     do base=${dir:0:-4}
-        find ${base} -maxdepth 1 -printf "./%f\n" | grep -v "\.git\|\.rsync_exclude" > ${base}/.rsync_exclude
+        find ${base} -maxdepth 1 -printf "%f\n" | grep -v "\.git\|\.rsync_exclude" > ${base}/.rsync_exclude
     done
 }

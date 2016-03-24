@@ -1,6 +1,6 @@
 <scheme name="Vim dark" version="142" parent_scheme="Default">
   <option name="LINE_SPACING" value="1.0" />
-  <option name="EDITOR_FONT_SIZE" value="16" />
+  <option name="EDITOR_FONT_SIZE" value="13" />
   <option name="CONSOLE_FONT_NAME" value="Hack" />
   <option name="CONSOLE_FONT_SIZE" value="12" />
   <option name="EDITOR_FONT_NAME" value="Sauce Code Powerline" />
@@ -540,6 +540,9 @@
       <value>
         <option name="FOREGROUND" value="bbbbbb" />
       </value>
+    </option>
+    <option name="MULTIMARKDOWN.BOLD_ITALIC">
+      <value />
     </option>
     <option name="NOT_USED_ELEMENT_ATTRIBUTES">
       <value>
