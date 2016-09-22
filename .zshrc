@@ -49,11 +49,13 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git adb bower man meteor npm node ubuntu thefuck yeoman)
+plugins=(git adb bower man meteor npm node ubuntu thefuck yeoman docker)
+
+bindkey -v
 
 # User configuration
 
-export PATH="~/daten/Software/Android/android-ndk-r10e:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/Android/Sdk/tools:~/Android/Sdk/platform-tools"
+export PATH=":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/basti/Android/Sdk/tools:/home/basti/Android/Sdk/platform-tools"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -97,3 +99,22 @@ fi
 if [ -f ~/.shell_functions ]; then
     . ~/.shell_functions
 fi
+###-begin-yo-completion-###
+_yo_completion () {
+  local cword line point words si
+  read -Ac words
+  read -cn cword
+  let cword-=1
+  read -l line
+  read -ln point
+  si="$IFS"
+  IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                     COMP_LINE="$line" \
+                     COMP_POINT="$point" \
+                     yo-complete completion -- "${words[@]}" \
+                     2>/dev/null)) || return $?
+  IFS="$si"
+}
+compctl -K _yo_completion yo
+###-end-yo-completion-###
+

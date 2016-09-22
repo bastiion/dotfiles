@@ -1,5 +1,5 @@
 #
-alias eix="apt-cache search "
+alias eix="aptitude search "
 
 
 #
@@ -61,3 +61,6 @@ alias ssh-x='/usr/bin/ssh -c arcfour,blowfish-cbc -XC'
 #
 alias dotgit="git --git-dir ~/dotfiles/.git --work-tree=$HOME"
 
+
+# Scala with all libraries found in com.typesafe.play
+alias scala-with-play="scala -cp $(find  ~/.ivy2/cache/com.typesafe.play/ -iname '*2.11*' -name '*.jar' | tr '\n' ':' | sed 's/:$/\n/')"
