@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Service
+Name=image-convert
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin,image/*
+Actions=ConvertImg
+MimeType=mif;PNM;pgm;ppm;bmp;ras;JP2;JPC;jpg;jpeg;png
+Icon=image-x-applix-graphics
+
+
+[Desktop Action ConvertImg]
+Name=Convert Image with ImageMagick
+Name[de]= mit ImageMagick umwandeln
+Exec=~/.bash_scripts/konvertAction.sh %F
