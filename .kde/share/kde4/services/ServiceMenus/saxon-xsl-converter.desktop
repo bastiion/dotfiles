@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Service
+Name=saxon
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin,application/*
+Actions=Convert
+MimeType=xml;xslt;xsl;svg;
+Icon=image-application-xml
+X-KDE-Submenu=XML
+
+[Desktop Action Convert]
+Name=Convert XML with Saxon9
+Name[de]=XML Konvertierung mittels Saxon9
+Exec=~/.bash_scripts/saxon_helper.sh %F
+Icon=image-application-xml
+

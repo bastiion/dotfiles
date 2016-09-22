@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Service
+Name=chromecast
+Encoding=UTF-8
+ServiceTypes=KonqPopupMenu/Plugin,video/*
+Actions=CastVideo
+MimeType=avi;mpg;mp4;flv;mov
+
+[Desktop Action CastVideo]
+Icon=chromium-browser
+Name=Stream Media to Chromecast
+Name[de]=An Chromecast Senden
+Exec=x-terminal-emulator -e ~/.bash_scripts/castnow.sh --device Canaletto-Cast %F
