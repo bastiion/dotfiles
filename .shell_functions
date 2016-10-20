@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # DESCRIPTION:
 #   * h highlights with color specified keywords when you invoke it via pipe
@@ -130,9 +130,8 @@ cbd() {
         cat -n ${FILE} | head -n 10
         return
     fi
-    
-    CMD="sed -n ${LINE}p ${FILE}"
-    DIR=$($CMD)
+   
+    DIR=$(/bin/sed -n ${LINE}p ${FILE})
     echo $DIR
     cd $DIR
 }
