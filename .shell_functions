@@ -150,3 +150,13 @@ rsync_exclude_git() {
         find ${base} -maxdepth 1 -printf "%f\n" | grep -v "\.git\|\.rsync_exclude" > ${base}/.rsync_exclude
     done
 }
+
+
+mkcd() {
+    if [ -z ${1} ];then
+        echo "Please provide a folder name"
+        exit 1
+    fi
+    mkdir -p ${1}
+    cd ${1}
+}
