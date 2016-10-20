@@ -130,9 +130,8 @@ cbd() {
         cat -n ${FILE} | head -n 10
         return
     fi
-    
-    CMD="/bin/sed -n ${LINE}p ${FILE}"
-    DIR=`${CMD}`
+   
+    DIR=$(/bin/sed -n ${LINE}p ${FILE})
     echo $DIR
     cd $DIR
 }
