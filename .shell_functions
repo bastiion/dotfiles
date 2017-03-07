@@ -48,7 +48,7 @@ h() {
 	# check maximum allowed input
 	if (( ${#@} > 12)); then
 		echo "Too many terms. h supports a maximum of 12 groups. Consider relying on regular expression supported patterns like \"word1\\|word2\""
-		exit -1
+		return -1
 	fi;
 
 	# set zsh compatibility
@@ -154,8 +154,24 @@ rsync_exclude_git() {
 mkcd() {
     if [ -z ${1} ];then
         echo "Please provide a folder name"
-        exit 1
+        return 1
     fi
     mkdir -p ${1}
     cd ${1}
+}
+
+ssh_pubkey_send() {
+    if [ -z ${1} ];then
+        echo "Please provide a user@host as destination"
+        return 1
+    fi
+    if [ ! -f ~/.ssh/id_rsa.pub ]; then 
+        read -q "REPLY?Generate a key pair(y/n)?"
+        if [ ${REPLY} = "y" ]; then
+            ssh-keygen -t rsa
+        else
+            return 1
+        fi
+    fi
+    cat ~/.ssh/id_rsa.pub | ssh ${1} "cat - >> ~/.ssh/authorized_keys"
 }
