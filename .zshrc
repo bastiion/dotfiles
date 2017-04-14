@@ -88,7 +88,11 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias zshchtheme="${ZSH}/tools/theme_chooser.sh"
 export NO_AT_BRIDGE=1
-export ANDROID_HOME=/opt/android-sdk-linux_x86
+<<<<<<< HEAD
+export ZSH_CUSTOM="~/.oh-my-zsh-custom/"
+if [ -d /opt/android-sdk-linux_x86 ]; then
+    export ANDROID_HOME=/opt/android-sdk-linux_x86
+fi
 
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
 

@@ -1,3 +1,6 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "/home/basti/.oh-my-zsh-custom/plugins/yeoman"]
+	path = /home/basti/.oh-my-zsh-custom/plugins/yeoman
+	url = https://github.com/edouard-lopez/yeoman-zsh-plugin.git
