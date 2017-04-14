@@ -55,7 +55,7 @@ bindkey -v
 
 # User configuration
 
-export PATH=":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/basti/Android/Sdk/tools:/home/basti/Android/Sdk/platform-tools"
+export PATH=":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/android-sdk-linux_x86/tools:/opt/android-sdk-linux_x86/platform-tools"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -88,7 +88,11 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias zshchtheme="${ZSH}/tools/theme_chooser.sh"
 export NO_AT_BRIDGE=1
+<<<<<<< HEAD
 export ZSH_CUSTOM="~/.oh-my-zsh-custom/"
+if [ -d /opt/android-sdk-linux_x86 ]; then
+    export ANDROID_HOME=/opt/android-sdk-linux_x86
+fi
 
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
 
