@@ -175,3 +175,37 @@ ssh_pubkey_send() {
     fi
     cat ~/.ssh/id_rsa.pub | ssh ${1} "cat - >> ~/.ssh/authorized_keys"
 }
+
+
+function del_hist {
+
+  if [ -z ${1} ];then
+    echo "Provide a history search term"
+    return 1
+  fi
+  
+  history | tail -n1 
+  NUM=`history | grep ${1} | tail -n1 |  sed 's/ \([0-9]\{4\}\).*/\1/'`
+  
+  if [ -z ${1} ];then
+    echo "No hits!"
+    return 1
+  fi
+  
+  echo "Deleting ${NUM}"
+  
+  while [[ ${NUM} -gt 0 ]];do
+    echo "Deleting ${NUM}"
+    history -d ${NUM}
+    NUM=`history | grep ${1} | tail -n1 |  sed 's/ \([0-9]\{4\}\).*/\1/'`
+  done
+}
+
+
+function export_blazegraph {
+    NAMESPACE=${1}
+    HOST=${2:-localhost}
+    curl -X POST http://${HOST}:9999/blazegraph/namespace/${NAMESPACE}/sparql --data-urlencode \
+'query=CONSTRUCT  WHERE { hint:Query hint:analytic "true" . hint:Query hint:constructDistinctSPO "false" . ?s ?p ?o }' -H 'Accept:application/sparql-results+json' > knowledgebase-export-`date -I`.json
+}
+

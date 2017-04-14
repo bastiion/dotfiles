@@ -9,7 +9,7 @@ DB0=${4}
 USER1=${5:-$USER0}
 PW1=${6:-$PW0}
 
-ALL=""
+ALL="--databases"
 if [ -z ${DB0} ];then
     ALL="--all-databases"
 fi
