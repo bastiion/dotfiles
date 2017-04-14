@@ -88,6 +88,7 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias zshchtheme="${ZSH}/tools/theme_chooser.sh"
 export NO_AT_BRIDGE=1
+export ZSH_CUSTOM="~/.oh-my-zsh-custom/"
 
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
 

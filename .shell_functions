@@ -126,7 +126,7 @@ cbd() {
     LINE=${1}
     if [ -z ${LINE} ];then
         LINE="1"
-    elif [ ${LINE} = "?" ];then
+    elif [[ ${LINE} = "?" ]];then
         cat -n ${FILE} | head -n 10
         return
     fi

@@ -1,0 +1,49 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="${NAME}">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+    </style>
+
+  </template>
+  <script>
+      class ${COMP_CLASS_NAME} extends Polymer.Element {
+       static get is() { return '${NAME}'; }
+       
+       static get listener() { return []; }
+       
+       static get observer() { return []; }
+       
+       static get properties() {
+        return {
+            test: {
+              type: String,
+              value: 'Welcome!',
+              notify: true
+            }
+          };
+        }
+        
+        constructor() {
+          super();
+        }
+        
+        ready() {
+          super.ready();
+          Polymer.RenderStatus.beforeNextRender(this, function() {
+            //attached
+          });
+        }
+        
+        <!-- public methods -->
+        
+        <!-- private methods -->
+        
+      }
+      
+      window.customElements.define(${COMP_CLASS_NAME}.is, ${COMP_CLASS_NAME});
+  </script>
+</dom-module>
