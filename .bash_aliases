@@ -68,3 +68,11 @@ alias scala-with-play="scala -cp $(find  ~/.ivy2/cache/com.typesafe.play/ -iname
 
 #
 alias cscope_cpp_files="find . -type f -print | grep -E '\.(c(pp)?|h)$' > cscope.files"
+
+
+#give group and others access to dirs and files, if x is set to user give x to others (capital X)
+alias chmodD755F644="chmod -R u+rwX,go+rX,go-w"
+
+
+#
+alias git-submodule-recursive-update="git submodule update --recursive --remote"
