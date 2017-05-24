@@ -203,10 +203,11 @@ function del_hist {
 
 
 function export_blazegraph {
-    NAMESPACE=${1}
-    HOST=${2:-localhost}
+    QUERY=${1}
+    NAMESPACE=${2}
+    HOST=${3:-localhost}
     curl -X POST http://${HOST}:9999/blazegraph/namespace/${NAMESPACE}/sparql --data-urlencode \
-'query=CONSTRUCT  WHERE { hint:Query hint:analytic "true" . hint:Query hint:constructDistinctSPO "false" . ?s ?p ?o }' -H 'Accept:application/sparql-results+json' > knowledgebase-export-`date -I`.json
+    "query=${QUERY}" -H 'Accept:application/sparql-results+json' > knowledgebase-export-`date -I`.json
 }
 
 function symlink_local_components {
@@ -218,3 +219,5 @@ function symlink_local_components {
         fi
     done
 }
+
+
