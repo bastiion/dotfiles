@@ -209,3 +209,12 @@ function export_blazegraph {
 'query=CONSTRUCT  WHERE { hint:Query hint:analytic "true" . hint:Query hint:constructDistinctSPO "false" . ?s ?p ?o }' -H 'Accept:application/sparql-results+json' > knowledgebase-export-`date -I`.json
 }
 
+function symlink_local_components {
+    for dir in  $(find ../.. -mindepth 1 -maxdepth 1 -type d );do 
+        base=$(basename "${dir}")
+        if [[ -d "./${base}" ]];then 
+            rm -r "./${base}"
+            ln -s "${dir}" .
+        fi
+    done
+}
