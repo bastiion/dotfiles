@@ -12,13 +12,19 @@ if [[ -e "${NAME}" ]];then
    exit 1
 fi
 
+function git_add_all {
+    git add --ignore-errors *
+    git add --ignore-errors .git*
+    return 0
+}
+
 mkdir "${NAME}"
 cd "${NAME}"
 polymer init \
 && tar xf ~/.bash_scripts/share/missing-element-files.tar \
 && git init \
-&& git remote add origin "${GITURL}" \
-&& git add --ignore-errors * \
+&& git remote add origin "${GITURL}" \#
+&& git_add_all \
 && echo "Everything looks fine! now make your first commit"
 
 
