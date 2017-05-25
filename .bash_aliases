@@ -68,3 +68,7 @@ alias scala-with-play="scala -cp $(find  ~/.ivy2/cache/com.typesafe.play/ -iname
 
 #
 alias cscope_cpp_files="find . -type f -print | grep -E '\.(c(pp)?|h)$' > cscope.files"
+
+
+#
+alias c3d2pavu="PULSE_SERVER=cidre.local pavucontrol"
