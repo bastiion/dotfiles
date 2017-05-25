@@ -126,7 +126,4 @@ compctl -K _yo_completion yo
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-<<<<<<< HEAD
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-=======
->>>>>>> 7e3caf268211fddebb4532c3e82bacca1e41be7e
