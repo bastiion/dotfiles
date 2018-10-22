@@ -84,3 +84,63 @@ alias iptablesCountMatches="sudo iptables -t nat -vnL"
 
 #
 alias restartWDDocker="docker container restart eea40289090f"
+
+#The quickstrat file for QUicklisp
+alias sbcl-quickstart="sbcl --script /usr/share/cl-quicklisp/quicklisp.lisp"
+
+
+#Run a polymer element or application
+alias poser="polymer serve"
+
+
+#
+alias micro="docker exec clever_shirley micro"
+
+
+#
+alias micro-rel="docker exec clever_shirley micro-relation"
+
+
+#
+alias smicro="docker exec microstructures_santex_micro_1 micro"
+
+
+#
+alias smicro-rel="docker exec microstructures_santex_micro_1 micro-relation"
+
+
+#
+alias getConnectedMonitors='xrandr | grep -e " connected [^(]" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/"'
+
+
+#
+alias createGraco="~/.bash_scripts/create_graviola_component.sh"
+
+
+#
+alias wayback-ms="docker run -it --rm --name running-wayback-crawler -v "\$PWD"/crawled\:/out wayback-machine-scraper"
+
+
+#
+alias wayback-ms2="docker run -it --rm --name running-wayback-crawler -v "\$PWD"/crawled\:/out "
+
+
+#
+alias fontconvert="/usr/bin/fontforge -lang=ff -c 'Open(\$1); Generate(\$2)'"
+
+
+#
+alias maxBrightness="echo 4794 | sudo tee /sys/class/backlight/intel_backlight/brightness"
+
+
+#
+alias gajim-docker="docker run -ti --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v ~/gajim:/home/gajim  -e uid=$(id -u) -e gid=$(id -g)  gajim-omemo-docker"
+
+
+#
+alias zarn="yarn"
+
+
+#
+alias graviola-modulizer="node --max-old-space-size=8192  /home/basti/.nvm/versions/node/v9.5.0/bin/modulizer --import-style name --out ."
+

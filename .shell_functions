@@ -211,6 +211,7 @@ function export_blazegraph {
 }
 
 function symlink_local_components {
+    cd bower_components
     for dir in  $(find ../.. -mindepth 1 -maxdepth 1 -type d );do 
         base=$(basename "${dir}")
         if [[ -d "./${base}" ]];then 
@@ -218,6 +219,35 @@ function symlink_local_components {
             ln -s "${dir}" .
         fi
     done
+}
+
+
+function yarn_first_link_all_from_subpackage {
+    SUBP=${1}
+  if [ -z ${SUBP} ];then
+      echo "No subpackage (use @graviola or similar as first argument)"
+    return 1
+  fi
+
+  for dir in $(ls -1 node_modules/${SUBP});do 
+      echo "$dir"
+      cd ../../../$dir
+      yarn link
+      cd -
+  done
+}
+
+function yarn_second_link_all_to_current_project {
+    SUBP=${1}
+  if [ -z ${SUBP} ];then
+      echo "No subpackage (use @graviola or similar as first argument)"
+    return 1
+  fi
+
+  for dir in $(ls -1 node_modules/${SUBP});do 
+      echo "$dir"
+      yarn link ${SUBP}/${dir}
+  done
 }
 
 

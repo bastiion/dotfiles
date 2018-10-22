@@ -23,7 +23,7 @@ cd "${NAME}"
 polymer init \
 && tar xf ~/.bash_scripts/share/missing-element-files.tar \
 && git init \
-&& git remote add origin "${GITURL}" \#
+&& git remote add origin "${GITURL}" \
 && git_add_all \
 && echo "Everything looks fine! now make your first commit"
 

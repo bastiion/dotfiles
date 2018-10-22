@@ -17,8 +17,12 @@ set $mod Mod4
 exec_always --no-startup-id /usr/bin/nitrogen --restore
 exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id /usr/bin/nm-applet
-exec --no-startup-id /usr/bin/touchfreeze
+#exec --no-startup-id /usr/bin/touchfreeze
+exec --no-startup-id /usr/bin/xrandr-indicator
+exec --no-startup-id /usr/bin/pasystray
+exec --no-startup-id /usr/bin/ibus-daemon
 exec /usr/bin/truecrypt --auto-mount=favorites --load-preferences 
+set $i3finder /home/basti/.nvm/versions/node/v9.2.0/bin/node /home/basti/.nvm/versions/node/v9.2.0/bin/i3finder
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -96,13 +100,13 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # mod p brings up a list of windows/workspaces/tags to focus
-bindsym $mod+p exec i3finder
+bindsym $mod+p exec $i3finder
 #
 # # mod g brings up a list of windows/workspaces/tags to move to the current area
-bindsym $mod+g exec i3finder -a move
+bindsym $mod+g exec $i3finder -a move
 #
 # # mod b triggers the back manuever
-bindsym $mod+b exec i3finder -a back
+bindsym $mod+b exec $i3finder -a back
 
 
 # switch to workspace
@@ -118,16 +122,16 @@ bindsym $mod+b exec i3finder -a back
 #  bindsym $mod+0 workspace 10
 # bind mod [num] to change to a workspace, but use msg parameter
 # # so that these motions are added to our history.
-bindsym $mod+1 exec i3finder -a msg -i 'workspace 1'
-bindsym $mod+2 exec i3finder -a msg -i 'workspace 2'
-bindsym $mod+3 exec i3finder -a msg -i 'workspace 3'
-bindsym $mod+4 exec i3finder -a msg -i 'workspace 4'
-bindsym $mod+5 exec i3finder -a msg -i 'workspace 5: mail'
-bindsym $mod+6 exec i3finder -a msg -i 'workspace 6: www'
-bindsym $mod+7 exec i3finder -a msg -i 'workspace 7: dev'
-bindsym $mod+8 exec i3finder -a msg -i 'workspace 8'
-bindsym $mod+9 exec i3finder -a msg -i 'workspace 9'
-bindsym $mod+0 exec i3finder -a msg -i 'workspace 10'
+bindsym $mod+1 exec $i3finder -a msg -i 'workspace 1'
+bindsym $mod+2 exec $i3finder -a msg -i 'workspace 2'
+bindsym $mod+3 exec $i3finder -a msg -i 'workspace 3'
+bindsym $mod+4 exec $i3finder -a msg -i 'workspace 4'
+bindsym $mod+5 exec $i3finder -a msg -i 'workspace 5: mail'
+bindsym $mod+6 exec $i3finder -a msg -i 'workspace 6: www'
+bindsym $mod+7 exec $i3finder -a msg -i 'workspace 7: dev'
+bindsym $mod+8 exec $i3finder -a msg -i 'workspace 8'
+bindsym $mod+9 exec $i3finder -a msg -i 'workspace 9'
+bindsym $mod+0 exec ~/.i3/mpv-youtube-dl.sh
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -192,6 +196,27 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+##
+# move floating windows with keys
+bindsym $mod+m mode "move" focus floating
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym Left  move left
+    bindsym Down  move down
+    bindsym Up    move up
+    bindsym Right move right
+
+    bindsym h     move left
+    bindsym j     move down
+    bindsym k     move up
+    bindsym l     move right
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
