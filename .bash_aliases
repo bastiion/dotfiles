@@ -76,3 +76,11 @@ alias chmodD755F644="chmod -R u+rwX,go+rX,go-w"
 
 #
 alias git-submodule-recursive-update="git submodule update --recursive --remote"
+
+
+#shows all iptable rules with matching count
+alias iptablesCountMatches="sudo iptables -t nat -vnL"
+
+
+#
+alias restartWDDocker="docker container restart eea40289090f"

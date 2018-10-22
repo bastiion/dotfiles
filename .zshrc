@@ -123,6 +123,11 @@ _yo_completion () {
 compctl -K _yo_completion yo
 ###-end-yo-completion-###
 
+if [[ -d "${HOME}/.nvm" ]];then 
+	export NVM_DIR="$HOME/.nvm"
+fi
+if [[ -d "${HOME}/share/nvm" ]];then 
+	export NVM_DIR="$HOME/.nvm"
+fi
 
-export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
