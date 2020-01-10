@@ -78,6 +78,13 @@ alias chmodD755F644="chmod -R u+rwX,go+rX,go-w"
 alias git-submodule-recursive-update="git submodule update --recursive --remote"
 
 
+#shows all iptable rules with matching count
+alias iptablesCountMatches="sudo iptables -t nat -vnL"
+
+
+#
+alias restartWDDocker="docker container restart eea40289090f"
+
 #The quickstrat file for QUicklisp
 alias sbcl-quickstart="sbcl --script /usr/share/cl-quicklisp/quicklisp.lisp"
 
@@ -137,6 +144,7 @@ alias zarn="yarn"
 #
 alias graviola-modulizer="node --max-old-space-size=8192  /home/basti/.nvm/versions/node/v9.5.0/bin/modulizer --import-style name --out ."
 
+<<<<<<< HEAD
 
 #
 alias scpWithProgess="rsync -r -v --progress -e ssh "
@@ -181,3 +189,15 @@ alias ems_env=". ~/daten/Entwicklung/emscripten/emsdk/emsdk_env.sh && PATH=$PATH
 
 #
 alias lsLocalTCPPorts="sudo lsof -iTCP -sTCP:LISTEN -P"
+
+# Kill all running containers.
+alias dockerkillall='docker kill $(docker ps -q)'
+
+# Delete all stopped containers.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+
+# Delete all untagged images.
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+
+# Delete all stopped containers and untagged images.
+alias dockerclean='dockercleanc || true && dockercleani'
