@@ -136,3 +136,48 @@ alias zarn="yarn"
 
 #
 alias graviola-modulizer="node --max-old-space-size=8192  /home/basti/.nvm/versions/node/v9.5.0/bin/modulizer --import-style name --out ."
+
+
+#
+alias scpWithProgess="rsync -r -v --progress -e ssh "
+
+
+#
+alias changeDefaultRouteVia172.22.99.4="sudo ip r c default via 172.22.99.1 dev wlan2  proto static  metric 600 via 172.22.99.4"
+
+
+#
+alias createSolrCore="curl -F action=CREATE \
+-F name=blazegraph \
+-F instanceDir=/home/basti/daten/Entwicklung/SemanticFilemanager/libraries/solr/solr-7.4.0/server/solr/blazegraph \
+-F config=solrconfig.xml \
+-F dataDir=data \
+http://localhost:8983/solr/admin/cores"
+
+
+#
+alias yarnLinkAllFromGraviolaDir='for dir in `ls -1 node_modules/@graviola`;do echo "$dir a";yarn link @graviola/$dir;done'
+
+
+#
+alias mail2rdf="/usr/bin/perl /home/basti/daten/Entwicklung/SemanticFilemanager/experiments/analyzer/rfc822/mailToRDF/Graviola/RDF/app.pl"
+
+
+#
+alias dockerRmUntaggedImages="docker rmi \$(docker images | grep \"^<none>\" | awk \"{print \$3}\")"
+
+
+#
+alias hqResolvFix="sudo cp /etc/resolv.conf_hq /etc/resolv.conf"
+
+
+#
+alias inkstitch="docker run --rm  -e DISPLAY=:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/basti:/home/basti -v /home/basti/daten/Projekte/c3d2/embroidery/inkstitch-home:/home/inkscape pfaffbert/inkscape:latest inkscape"
+
+
+#
+alias ems_env=". ~/daten/Entwicklung/emscripten/emsdk/emsdk_env.sh && PATH=$PATH:$EMSDK/emscripten/1.38.3/"
+
+
+#
+alias lsLocalTCPPorts="sudo lsof -iTCP -sTCP:LISTEN -P"

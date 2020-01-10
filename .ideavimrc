@@ -1,2 +1,3 @@
 #Ctrl+S will save file
 imap <C-s> <C-o>:w<CR>
+set surround

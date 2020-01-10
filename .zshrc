@@ -7,6 +7,7 @@ export ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
 
+export XDG_CURRENT_DESKTOP="KDE"
 export AMMONITE_MODULES=/home/basti/daten/Entwicklung/scala/ammonite-modules
 
 # Uncomment the following line to use case-sensitive completion.
@@ -51,13 +52,12 @@ export AMMONITE_MODULES=/home/basti/daten/Entwicklung/scala/ammonite-modules
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git adb bower yarn man meteor npm node ubuntu thefuck docker)
+plugins=(git adb bower yarn man meteor npm node ubuntu thefuck docker kubectl docker docker-compose sbt scala ztrace lein)
 
 bindkey -v
 
 # User configuration
 
-export PATH=":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/android-sdk-linux_x86/tools:/opt/android-sdk-linux_x86/platform-tools:/home/basti/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -130,10 +130,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 
 if [ -f ~/.zshrc_priv ]; then
     . ~/.zshrc_priv
 fi
+
+eval "$(rbenv init -)"
+
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
