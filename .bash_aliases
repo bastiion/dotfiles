@@ -144,8 +144,6 @@ alias zarn="yarn"
 #
 alias graviola-modulizer="node --max-old-space-size=8192  /home/basti/.nvm/versions/node/v9.5.0/bin/modulizer --import-style name --out ."
 
-<<<<<<< HEAD
-
 #
 alias scpWithProgess="rsync -r -v --progress -e ssh "
 
