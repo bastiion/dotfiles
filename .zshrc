@@ -52,7 +52,7 @@ export AMMONITE_MODULES=/home/basti/daten/Entwicklung/scala/ammonite-modules
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git adb bower yarn man meteor npm node ubuntu thefuck docker kubectl docker docker-compose sbt scala ztrace lein)
+plugins=(git adb bower yarn man meteor npm node ubuntu docker kubectl docker docker-compose sbt scala lein nix)
 
 bindkey -v
 
@@ -140,7 +140,7 @@ if [ -f ~/.zshrc_priv ]; then
     . ~/.zshrc_priv
 fi
 
-eval "$(rbenv init -)"
+command -v rbenv && eval "$(rbenv init -)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.krew/bin:$PATH"
 

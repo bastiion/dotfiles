@@ -63,7 +63,7 @@ alias dotgit="git --git-dir ~/dotfiles/.git --work-tree=$HOME"
 
 
 # Scala with all libraries found in com.typesafe.play
-alias scala-with-play="scala -cp $(find  ~/.ivy2/cache/com.typesafe.play/ -iname '*2.11*' -name '*.jar' | tr '\n' ':' | sed 's/:$/\n/')"
+alias scala-with-play="scala -cp $([ -d '~/.ivy2/cache/com.typesafe.play/' ] && find  ~/.ivy2/cache/com.typesafe.play/ -iname '*2.11*' -name '*.jar' | tr '\n' ':' | sed 's/:$/\n/')"
 
 
 #
@@ -203,3 +203,5 @@ alias dockerclean='dockercleanc || true && dockercleani'
 
 #
 alias ocrmypdf="docker run --rm -v \"$(pwd):/data\" jbarlow83/ocrmypdf"
+
+alias fix-bash-env="sed -i '1s/.*/#!\/usr\/bin\/env bash/'"

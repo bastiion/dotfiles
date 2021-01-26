@@ -14,16 +14,18 @@ set $mod Mod4
 # Autostart commands
 #
 
-exec_always --no-startup-id /usr/bin/nitrogen --restore
-exec --no-startup-id /usr/bin/dunst
-exec --no-startup-id /usr/bin/nm-applet
+exec_always --no-startup-id nitrogen --restore
+exec --no-startup-id dunst
+exec --no-startup-id onboard
+exec --no-startup-id nm-applet
 #exec --no-startup-id /usr/bin/touchfreeze
-exec --no-startup-id /usr/bin/xrandr-indicator
-exec --no-startup-id /usr/bin/pasystray
-exec --no-startup-id /usr/bin/ibus-daemon
-exec --no-startup-id /usr/bin/syndaemon -i 1.5 -t -k -d
-exec --no-startup-id /usr/local/bin/pa-applet
-exec /usr/bin/truecrypt --auto-mount=favorites --load-preferences 
+#exec --no-startup-id /usr/bin/xrandr-indicator
+exec --no-startup-id pasystray
+#exec --no-startup-id /usr/bin/ibus-daemon
+#exec --no-startup-id /usr/bin/syndaemon -i 1.5 -t -k -d
+#exec --no-startup-id /usr/local/bin/pa-applet
+#exec /usr/bin/truecrypt --auto-mount=favorites --load-preferences 
+exec xcompmgr -c -f -n
 set $i3finder /home/basti/.nvm/versions/node/v9.2.0/bin/node /home/basti/.nvm/versions/node/v9.2.0/bin/i3finder
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -39,7 +41,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -102,7 +104,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # mod p brings up a list of windows/workspaces/tags to focus
-bindsym $mod+p exec $i3finder
+bindsym $mod+p exec --no-startup-id "rofi -combi-modi window,drun,ssh -font \\"hack 10\\" -show combi -icon-theme \\"Papirus\\" -show-icons"
 #
 # # mod g brings up a list of windows/workspaces/tags to move to the current area
 bindsym $mod+g exec $i3finder -a move
@@ -110,30 +112,41 @@ bindsym $mod+g exec $i3finder -a move
 # # mod b triggers the back manuever
 bindsym $mod+b exec $i3finder -a back
 
+bindsym $mod+Shift+plus exec transset -a --inc 0.2
+bindsym $mod+minus exec transset -a --dec 0.2
+
+#set $i3-cycle ~/.i3/config/i3_cycle.py
+#
+#bindsym $mod+} exec $i3-cycle right
+#bindsym $mod+{ exec $i3-cycle left
+#bindsym $mod+Shift+{ exec $i3-cycle up
+#bindsym $mod+Shift+} exec $i3-cycle down
+#bind $mod+49 exec $i3-cycle next
+#bind $mod+Shift+49 exec $i3-cycle prev
 
 # switch to workspace
-#  bindsym $mod+1 workspace 1
-#  bindsym $mod+2 workspace 2
-#  bindsym $mod+3 workspace 3
-#  bindsym $mod+4 workspace 4
-#  bindsym $mod+5 workspace 5: mail
-#  bindsym $mod+6 workspace 6: www
-#  bindsym $mod+7 workspace 7: dev
-#  bindsym $mod+8 workspace 8
-#  bindsym $mod+9 workspace 9
-#  bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5: mail
+bindsym $mod+6 workspace 6: www
+bindsym $mod+7 workspace 7: dev
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 # bind mod [num] to change to a workspace, but use msg parameter
 # # so that these motions are added to our history.
-bindsym $mod+1 exec $i3finder -a msg -i 'workspace 1'
-bindsym $mod+2 exec $i3finder -a msg -i 'workspace 2'
-bindsym $mod+3 exec $i3finder -a msg -i 'workspace 3'
-bindsym $mod+4 exec $i3finder -a msg -i 'workspace 4'
-bindsym $mod+5 exec $i3finder -a msg -i 'workspace 5: mail'
-bindsym $mod+6 exec $i3finder -a msg -i 'workspace 6: www'
-bindsym $mod+7 exec $i3finder -a msg -i 'workspace 7: dev'
-bindsym $mod+8 exec $i3finder -a msg -i 'workspace 8'
-bindsym $mod+9 exec $i3finder -a msg -i 'workspace 9'
-bindsym $mod+0 exec ~/.i3/mpv-youtube-dl.sh
+#bindsym $mod+1 exec $i3finder -a msg -i 'workspace 1'
+#bindsym $mod+2 exec $i3finder -a msg -i 'workspace 2'
+#bindsym $mod+3 exec $i3finder -a msg -i 'workspace 3'
+#bindsym $mod+4 exec $i3finder -a msg -i 'workspace 4'
+#bindsym $mod+5 exec $i3finder -a msg -i 'workspace 5: mail'
+#bindsym $mod+6 exec $i3finder -a msg -i 'workspace 6: www'
+#bindsym $mod+7 exec $i3finder -a msg -i 'workspace 7: dev'
+#bindsym $mod+8 exec $i3finder -a msg -i 'workspace 8'
+#bindsym $mod+9 exec $i3finder -a msg -i 'workspace 9'
+#bindsym $mod+0 exec ~/.i3/mpv-youtube-dl.sh
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -169,12 +182,12 @@ bindsym XF86Mail workspace 5: mail; exec /usr/local/bin/restartIfNotRunning.sh /
 bindsym XF86Sleep exec --no-startup-id i3lock -i background/lovis/lockscreen.png & dbus-send --system --print-reply     --dest=org.freedesktop.UPower     /org/freedesktop/UPower     org.freedesktop.UPower.Suspend 
 bindsym XF86HomePage workspace 6: www; exec /usr/local/bin/restartIfNotRunning.sh /usr/lib/firefox/firefox
 bindsym XF86Calculator workspace 7: dev
-bindsym Shift+XF86Calculator exec --no-startup-id exec xterm -e /usr/bin/python
-bindsym XF86AudioMute exec /usr/bin/pavucontrol
-bindsym XF86MonBrightnessUp exec sudo /usr/local/bin/brightness.py 10
-bindsym XF86MonBrightnessDown exec sudo /usr/local/bin/brightness.py -10
-bindsym Shift+Pause exec /usr/bin/nvidia-settings --page="X Server Display Configuration"
-bindsym XF86LaunchA exec /usr/bin/python2 /usr/bin/arandr
+bindsym Shift+XF86Calculator exec --no-startup-id  xterm -e python3
+bindsym XF86AudioMute exec pavucontrol
+bindsym XF86MonBrightnessUp exec sudo ~/.bash_scripts/brightness.py 10
+bindsym XF86MonBrightnessDown exec sudo ~/.bash_scripts/brightness.py -10
+#bindsym Shift+Pause exec /usr/bin/nvidia-settings --page="X Server Display Configuration"
+bindsym XF86LaunchA exec arandr
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -230,5 +243,5 @@ no_focus [window_role="pop-up"]
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command ~/.bash_scripts/i3status.sh
+        status_command i3status 
 }
